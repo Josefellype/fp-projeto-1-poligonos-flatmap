@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
@@ -131,7 +132,8 @@ public class PoligonosApp extends Application {
      * "triângulo", "pentágono", "hexágono" ou apenas um "polígono" geral quando tiver mais de 6 lados.
      */
     protected List<String> tipoPoligonos(){
-        // TODO Apague esta linha e a próxima e implemente seu código
+        List<Integer> qntdPontos = (List<Integer>) pontosPoligonos.stream().flatMap(pontos -> Stream.of(pontos.size()));
+
         return List.of();
     }
 
@@ -139,7 +141,7 @@ public class PoligonosApp extends Application {
      * Calcula o perímetro de cada polígono.
      * O perímetro é a soma da distância entre cada {@link Point} (x,y) do {@link Polygon}.
      * Se você pensar em um polígono como um quadrado, o perímetro representa a distância que você percorreria
-     * se andasse ao redor da borda do quadrado, do ponto inicial até o último ponto.
+     * se andasse ao redor da borda do quadrado, do ponto inicial até o último ponto.q
      *
      * <p>Este método é mais complexo. A implementação dele deve usar a operação {@link Stream#flatMap(Function)} que
      * percorre os itens de {@link #pontosPoligonos} (cada item representando um polígono).
@@ -176,7 +178,7 @@ public class PoligonosApp extends Application {
      * @return uma lista contendo o perímetro de cada polígono
      */
     protected List<Double> perimetros(){
-        // TODO Apague esta linha e a próxima e implemente seu código
+
         return List.of();
     }
 }
