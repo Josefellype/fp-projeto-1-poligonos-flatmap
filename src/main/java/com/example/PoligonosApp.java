@@ -132,9 +132,16 @@ public class PoligonosApp extends Application {
      * "triângulo", "pentágono", "hexágono" ou apenas um "polígono" geral quando tiver mais de 6 lados.
      */
     protected List<String> tipoPoligonos(){
-        List<Integer> qntdPontos = (List<Integer>) pontosPoligonos.stream().flatMap(pontos -> Stream.of(pontos.size()));
-
-        return List.of();
+        return pontosPoligonos.
+                stream().
+                flatMap(pontos -> Stream.of(pontos.size())).
+                map(totalPontos -> switch (totalPontos) {
+                        case 3 -> "Triângulo";
+                        case 4 -> "Quadrilátero";
+                        case 5 -> "Pentágono";
+                        case 6 -> "Hexágono";
+                        default -> "Polígono";
+                    }).toList();
     }
 
     /**
