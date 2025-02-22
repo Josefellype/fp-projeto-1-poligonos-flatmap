@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 /**
@@ -186,7 +187,14 @@ public class PoligonosApp extends Application {
      */
     protected List<Double> perimetros(){
 
-        return List.of();
+        return pontosPoligonos
+                .stream()
+                .flatMap(listaPontos -> {
+                    Point ultimoPonto = listaPontos.getLast();
+                    return listaPontos.stream()
+                            //Stream#reduce(Object, BinaryOperator)
+
+                }).toList();
     }
 }
 
