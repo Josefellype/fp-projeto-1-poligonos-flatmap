@@ -192,9 +192,9 @@ public class PoligonosApp extends Application {
                 .flatMap(listaPontos -> {
                     Point ultimoPonto = listaPontos.getLast();
                     Point primeiroPonto = listaPontos.getFirst();
-                    return listaPontos
+                    return Stream.of(listaPontos
                             .stream()
-                            .reduce(new Point(ultimoPonto,primeiroPonto),Point::new).distance();
+                            .reduce(new Point(ultimoPonto,primeiroPonto),Point::new).distance());
                 }).toList();
     }
 }
