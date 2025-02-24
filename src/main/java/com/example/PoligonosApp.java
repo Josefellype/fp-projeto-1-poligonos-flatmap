@@ -194,7 +194,7 @@ public class PoligonosApp extends Application {
                     Point primeiroPonto = listaPontos.getFirst();
                     return listaPontos
                             .stream()
-                            .reduce().distance();
+                            .reduce(new Point(ultimoPonto,primeiroPonto),Point::new).distance();
                 }).toList();
     }
 }
