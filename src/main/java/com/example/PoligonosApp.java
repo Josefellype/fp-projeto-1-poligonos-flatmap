@@ -87,14 +87,18 @@ public class PoligonosApp extends Application {
         final var root = new Pane();
         final var scene = new Scene(root, 800, 600);
 
-        pontosPoligonos.forEach(listaPontos -> {
+        pontosPoligonos.stream()
+                .map(listaPontos -> {
                     final var poligono = new Polygon();
-                    listaPontos.forEach(ponto -> poligono.getPoints().addAll(ponto.x(),ponto.y()));
+                    listaPontos.stream()
+                            .flatMap(point -> Stream.of(point.x(), point.y()))
+                            .toArray(Double[]::new);
 
-                    poligono.setFill(Color.BLUE);
                     poligono.setStroke(Color.BLACK);
-                    root.getChildren().add(poligono);
-                });
+                    poligono.setFill(Color.BLUE);
+                    return poligono;
+                })
+                .forEach(root.getChildren()::add);
 
         final List<String> perimetros = perimetros().stream().map(p -> String.format("%.1f", p)).toList();
         final var label1 = newLabel("Perímetro dos Polígonos: " + perimetros, 500);
